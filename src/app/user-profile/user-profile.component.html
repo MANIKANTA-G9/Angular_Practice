@@ -1,0 +1,18 @@
+<p>user-profile works!</p>
+
+<h1>Welcome {{name}}</h1>
+
+<label>Name</label>
+<input [(ngModel)]="name" name="name"/><br>
+<label>Email</label>
+<input [(ngModel)]="email" name="email"/><br>
+<label>Date of Birth</label>
+<input [(ngModel)]="dob" name="dob"/><br>
+
+<button (click)="onReset()" [disabled]="!isDataPresent">Reset</button>
+<button (click)="onSave()" [disabled]="!isDataPresent">Save</button>
+<h2>read-only view</h2>
+<p>Name: {{name}}</p>
+<p>Email:{{email}}</p>
+<p>Date of Birth:{{dob}}</p>
+<div>Count: {{count}}</div>
