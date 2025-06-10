@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,14 +9,26 @@ import { Component } from '@angular/core';
 })
 export class UserProfileComponent {
 
-  name='';
-  email='';
-  dob='';
+  userProfile=new FormGroup({
+    name:new FormControl(""),
+    email:new FormControl(""),
+    dob:new FormControl("")
+  })
+
+  get name(){return this.userProfile.value.name}
+  get email(){return this.userProfile.value.email}
+  get dob(){return this.userProfile.value.dob}
+
+
+  // name='';
+  // email='';
+  // dob='';
   count=0;
   onReset(){
-    this.name="";
-    this.email="";
-    this.dob="";
+    this.userProfile.reset();
+    // this.name="";
+    // this.email="";
+    // this.dob="";
   }
 
   onSave(){
@@ -24,7 +37,8 @@ export class UserProfileComponent {
   }
   
   get isDataPresent(){
-    return this.name||this.email||this.dob;
+    const formValue=this.userProfile.value;
+    return formValue.name||formValue.email||formValue.dob;
   }
 
 }
