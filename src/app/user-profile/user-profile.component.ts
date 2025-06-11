@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,8 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class UserProfileComponent {
 
   userProfile=new FormGroup({
-    name:new FormControl(""),
-    email:new FormControl(""),
+    name:new FormControl("", Validators.required),
+    email:new FormControl("", Validators.required),
     dob:new FormControl("")
   })
 
@@ -19,6 +19,20 @@ export class UserProfileComponent {
   get email(){return this.userProfile.value.email}
   get dob(){return this.userProfile.value.dob}
 
+  get nameErr(): string | null {
+    const nameControl = this.userProfile.get('name');
+    if (nameControl?.hasError('required')) {
+      return 'Name is required';
+    }
+    return null;
+  }
+  get emailErr(): string | null {
+    const nameControl = this.userProfile.get('email');
+    if (nameControl?.hasError('required')) {
+      return 'Email is required';
+    }
+    return null;
+  }
 
   // name='';
   // email='';

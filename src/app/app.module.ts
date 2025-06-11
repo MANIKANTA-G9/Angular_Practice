@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskListComponent } from './task-list/task-list.component';
+import { onHoverColorChange } from './task-list/onhover.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TaskListComponent,
+    onHoverColorChange
   ],
   imports: [
     BrowserModule,
