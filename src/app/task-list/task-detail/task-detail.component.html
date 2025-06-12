@@ -1,0 +1,13 @@
+<!-- <div *ngFor="let task of tasks" onHoverColorChange> -->
+  <ng-container *ngIf="condition === true">
+    <form [formGroup]="taskForm" (ngSubmit)="onTaskEditSubmit()">
+  <input type="text" formControlName="title">
+  <input type="date" formControlName="dueDate">
+  
+  <button type="submit" (click)="onTaskEditSubmit()" > Save</button>
+  </form>
+  </ng-container>
+  <p>{{task["title"]}}</p>
+  <small>Status: {{task["status"]}}, Due Date: {{task["dueDate"] | date: 'short'}}</small>
+  <button (click)="onEdit()">Edit</button>
+<!-- </div> -->

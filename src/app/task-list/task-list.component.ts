@@ -22,6 +22,16 @@ export class TaskListComponent {
     }
     this.tasks.push(taskMeta)
   }
+   onSave(value: any) {
+    let {id, ...task} = value;
+
+    task['dueDate'] = new Date(task['dueDate']);
+    task['dueDate'].setHours(task['dueDate'].getHours() + task['dueDate'].getTimezoneOffset() / 60);
+    this.tasks = this.tasks.map(t => t.id == id ? {...t, ...task} : t);
+  }
+
+  taskFilter = ""; 
+
   tasks = [
   {
     id: 1,

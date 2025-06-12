@@ -8,7 +8,14 @@
   <button type="submit" (click)="onSubmit()" > Submit</button>
 </form>
 <ng-container *ngIf="tasks.length > 0">
-  <div *ngFor="let task of tasks" onHoverColorChange>
-    <p [ngClass]="{red : task.dueDate < currentDate}">{{task["title"]}}</p>
-  </div>
+  <label>Task Status</label>
+    <select [(ngModel)]="taskFilter">
+      <option value="">All</option>
+      <option value="Incomplete">Incomplete</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Completed">Completed</option>
+    </select>
+  <div *ngFor="let task of tasks | filterStatus : taskFilter" onHoverColorChange>
+  <app-task-detail [task]="task" (saveTask)="onSave($event)"></app-task-detail>
+</div>
 </ng-container>
