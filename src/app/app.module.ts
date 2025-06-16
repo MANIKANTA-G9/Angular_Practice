@@ -10,6 +10,9 @@ import { onHoverColorChange } from './task-list/onhover.directive';
 import { TaskComponent } from './task/task.component';
 import { TaskDetailComponent } from './task-list/task-detail/task-detail.component';
 import { FilterStatusPipe } from './filter-status.pipe';
+import { ProductsComponent } from './products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductNamePipe } from './pipes/product-name.pipe';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,16 @@ import { FilterStatusPipe } from './filter-status.pipe';
     onHoverColorChange,
     TaskComponent,
     TaskDetailComponent,
-    FilterStatusPipe
+    FilterStatusPipe,
+    ProductsComponent,
+    ProductNamePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
