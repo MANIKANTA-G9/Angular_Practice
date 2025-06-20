@@ -1,0 +1,35 @@
+<p>registration works!</p>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <!-- Username -->
+  <label>Username</label>
+  <input formControlName="username" />
+  <div *ngIf="registrationForm.get('username')?.errors?.['required']">Username is required.</div>
+  <div *ngIf="registrationForm.get('username')?.errors?.['minlength']">Minimum 3 characters.</div>
+  <div *ngIf="registrationForm.get('username')?.errors?.['usernameTaken']">Username is already taken.</div>
+
+  <label>Email</label>
+  <input formControlName="email" />
+  <div *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</div>
+  <div *ngIf="registrationForm.get('email')?.errors?.['email']">Invalid email format.</div>
+
+  <label>Password</label>
+  <input type="password" formControlName="password" />
+  <div *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required.</div>
+  <div *ngIf="registrationForm.get('password')?.errors?.['minlength']">Min 6 characters.</div>
+
+  <label>Confirm Password</label>
+  <input type="password" formControlName="confirmPassword" />
+  <div *ngIf="registrationForm.errors?.['passwordsMismatch']">Passwords do not match.</div>
+
+  <label>Preferred Contact Method</label>
+  <select formControlName="contactMethod">
+    <option>Email</option>
+    <option>Phone</option>
+  </select>
+
+  <label>Phone</label>
+  <input formControlName="phone" />
+  <div *ngIf="registrationForm.errors?.['contactRequired']">Please provide a phone number.</div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>

@@ -13,6 +13,7 @@ import { FilterStatusPipe } from './filter-status.pipe';
 import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductNamePipe } from './pipes/product-name.pipe';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductNamePipe } from './pipes/product-name.pipe';
     TaskDetailComponent,
     FilterStatusPipe,
     ProductsComponent,
-    ProductNamePipe
+    ProductNamePipe,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
