@@ -1,0 +1,15 @@
+<p>Login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- Username -->
+  <label>UserName</label>
+  <input formControlName="username" />
+  <div *ngIf="loginForm.get('username')?.errors?.['required']">UserName is required.</div>
+  <div *ngIf="loginForm.get('username')?.errors?.['username']">Invalid UserName format.</div>
+
+  <label>Password</label>
+  <input type="password" formControlName="password" />
+  <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+  <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Min 6 characters.</div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

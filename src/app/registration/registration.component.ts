@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { debounceTime, map, switchMap, of } from 'rxjs';
+import { debounceTime, map, switchMap, of, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -59,7 +59,22 @@ registrationForm!: FormGroup;
   onSubmit(): void {
     if (this.registrationForm.valid) {
       console.log("Form Submitted!", this.registrationForm.value);
+      const req = this.http.post('http://localhost:3000/user/register', {
+        username: this.registrationForm.value.email,
+      email: this.registrationForm.value.email,
+    password: this.registrationForm.value.password,
+  phoneNumber: this.registrationForm.value.phoneNumber})
+      .subscribe({
+    next: (res) => {
+      console.log('Registration successful', res);
+      // this.registrationForm.reset(); // optional
       this.registrationForm.reset();
+      console.log(res);
+    },
+    error: (err) => {
+      console.error('Registration failed', err);
+    }
+  });
     }
   }
 }
