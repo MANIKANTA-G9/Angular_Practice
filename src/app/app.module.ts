@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductNamePipe } from './pipes/product-name.pipe';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     ProductsComponent,
     ProductNamePipe,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

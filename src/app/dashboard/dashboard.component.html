@@ -1,0 +1,7 @@
+<p>dashboard works!</p>
+<div *ngIf="users">
+<div *ngFor="let item of users">
+    <li> User Email : {{item.email}}</li>
+</div>
+<div>{{error}}</div>
+</div>
